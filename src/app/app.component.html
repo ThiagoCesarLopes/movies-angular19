@@ -1,0 +1,17 @@
+<nav>
+  <div class="header-bar">
+    <h1>{{ title }}</h1>
+  </div>
+</nav>
+<div class="layout">
+  <nav class="sidebar">
+    <ul>
+      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/list" routerLinkActive="active">List</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-container">
+    <router-outlet></router-outlet> 
+  </div>
+</div>

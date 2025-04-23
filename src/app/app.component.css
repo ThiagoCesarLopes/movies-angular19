@@ -1,0 +1,51 @@
+/* Layout Principal */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Menu Lateral */
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar ul li a.active {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Conteúdo Principal */
+.app-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Header */
+.header-bar {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.header-bar h1 {
+  margin: 0;
+  font-size: 25px;
+}

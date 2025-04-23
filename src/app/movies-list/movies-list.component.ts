@@ -1,0 +1,114 @@
+import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+
+interface Movie {
+  id: number;
+  year: number;
+  title: string;
+  studios: string[];
+  producers: string[];
+  winner: boolean;
+}
+
+@Component({
+  selector: 'app-movies-list',
+  standalone: true,
+  templateUrl: './movies-list.component.html',
+  styleUrls: ['./movies-list.component.css'],
+  imports: [
+    MatTableModule,
+    MatPaginatorModule,
+    FormsModule,
+    CommonModule,
+    RouterOutlet
+  ]
+})
+export class MoviesListComponent implements OnInit {
+  movies: any[] = [];
+  yearFilter: number | null = null;
+  winnerFilter: string | null = null;
+  currentPage = 0;
+  totalPages = 0;
+  pages: number[] = [];
+  visiblePages: number[] = []; 
+
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit(): void {
+    this.loadMovies();
+  }
+
+  loadMovies(): void {
+    this.movieService.getMovies(this.currentPage, 10, this.yearFilter ?? undefined, this.winnerFilter === 'true')
+      .subscribe({
+        next: (data: { content: any[]; totalElements: number }) => {
+          this.movies = data.content;
+          this.totalPages = Math.ceil(data.totalElements / 10);
+          this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+          this.updateVisiblePages();
+        },
+        error: (err) => console.error('Error loading movies:', err)
+      });
+  }
+
+  updateVisiblePages(): void {
+    const start = Math.floor(this.currentPage / 5) * 5;
+    const end = Math.min(start + 5, this.totalPages);
+    this.visiblePages = this.pages.slice(start, end);
+  }
+
+  applyFilters(): void {
+    this.currentPage = 0;
+    this.loadMovies();
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadMovies();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage + 1 < this.totalPages) {
+      this.currentPage++;
+      this.loadMovies();
+    }
+  }
+
+  goToPage(page: number): void {
+    this.currentPage = page;
+    this.loadMovies();
+  }
+
+  goToFirstPage(): void {
+    this.currentPage = 0;
+    this.loadMovies();
+  }
+
+  goToLastPage(): void {
+    this.currentPage = this.totalPages - 1;
+    this.loadMovies();
+  }
+
+  previousGroup(): void {
+    const firstVisiblePage = this.visiblePages[0];
+    if (firstVisiblePage > 1) {
+      this.currentPage = Math.max(0, firstVisiblePage - 6); 
+      this.loadMovies();
+    }
+  }
+
+  nextGroup(): void {
+    const lastVisiblePage = this.visiblePages[this.visiblePages.length - 1];
+    if (lastVisiblePage < this.totalPages) {
+      this.currentPage = Math.min(this.totalPages - 1, lastVisiblePage); 
+      this.loadMovies();
+    }
+  }
+}

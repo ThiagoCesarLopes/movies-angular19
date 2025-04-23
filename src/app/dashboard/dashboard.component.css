@@ -1,0 +1,184 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-section {
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .dashboard-table th,
+  .dashboard-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .dashboard-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .dashboard-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .dashboard-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .no-data-message {
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* Filtro */
+  .filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .filter-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .filter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 100%; /* Garante que o botão tenha a mesma altura do campo de entrada */
+  }
+
+  .filter-button i {
+    font-size: 18px; /* Ícone da lupa */
+  }
+
+  .filter-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Layout Principal */
+  .layout {
+    display: flex;
+    height: 100vh;
+  }
+
+  /* Menu Lateral */
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0; /* Cinza claro */
+    color: #333;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .sidebar ul li {
+    width: 100%;
+  }
+
+  .sidebar ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .sidebar ul li a:hover,
+  .sidebar ul li a.active {
+    background-color: #ddd;
+    font-weight: bold;
+  }
+
+  /* Conteúdo Principal */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  /* Grid Container */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Máximo de 2 colunas por linha */
+    gap: 20px;
+  }
+
+  /* Grid Item */
+  .grid-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  /* Títulos das Tabelas */
+  .grid-item h3 {
+    margin-top: 20px;
+    color: #333;
+  }
+
+  /* Tabelas Estilizadas */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed; /* Garante que todas as colunas tenham o mesmo tamanho */
+  }
+
+  .styled-table th,
+  .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: 25%; /* Cada coluna ocupa 25% da largura total */
+  }
+
+  .styled-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  .styled-table tr.odd {
+    background-color: #f9f9f9;
+  }
+
+  .styled-table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+

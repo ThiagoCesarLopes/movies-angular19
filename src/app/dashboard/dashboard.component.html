@@ -1,0 +1,119 @@
+<div class="layout">
+
+
+  <div class="main-content">
+    <div class="grid-container">
+      <!-- List Years with Multiple Winners -->
+      <div class="grid-item">
+        <h2>List Years with Multiple Winners</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Win Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let winner of yearsWithMultipleWinners; let i = index" [class.odd]="i % 2 === 0">
+              <td>{{ winner.year }}</td>
+              <td>{{ winner.winnerCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Top 3 Studios with Winners -->
+      <div class="grid-item">
+        <h2>Top 3 Studios with Winners</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Studio</th>
+              <th>Win Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let studio of studiosWithWins.slice(0, 3); let i = index" [class.odd]="i % 2 === 0">
+              <td>{{ studio.name }}</td>
+              <td>{{ studio.winCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Producers with Longest and Shortest Interval -->
+      <div class="grid-item">
+        <h2>Producers with Longest and Shortest Interval</h2>
+        
+        <!-- Tabela Maximum -->
+        <h3>Maximum</h3>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Producer</th>
+              <th>Interval</th>
+              <th>Previous Year</th>
+              <th>Following Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let interval of maxWinInterval; let i = index" [class.odd]="i % 2 === 0">
+              <td>{{ interval.producer }}</td>
+              <td>{{ interval.interval }}</td>
+              <td>{{ interval.previousWin }}</td>
+              <td>{{ interval.followingWin }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tabela Minimum -->
+        <h3>Minimum</h3>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Producer</th>
+              <th>Interval</th>
+              <th>Previous Year</th>
+              <th>Following Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let interval of minWinInterval; let i = index" [class.odd]="i % 2 === 0">
+              <td>{{ interval.producer }}</td>
+              <td>{{ interval.interval }}</td>
+              <td>{{ interval.previousWin }}</td>
+              <td>{{ interval.followingWin }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- List Movies Winner by Year -->
+      <div class="grid-item">
+        <h2>List Movies Winner by Year</h2>
+        <div class="filter-container">
+          <input [(ngModel)]="selectedYear" placeholder="Search by Year" type="number" class="filter-input" />
+          <button (click)="searchWinnersByYear()" class="filter-button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Studios</th>
+              <th>Producers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let winner of winnersByYear; let i = index" [class.odd]="i % 2 === 0">
+              <td>{{ winner.title }}</td>
+              <td>{{ winner.studios?.join(', ') }}</td>
+              <td>{{ winner.producers?.join(', ') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
