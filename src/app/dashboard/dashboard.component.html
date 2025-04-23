@@ -108,8 +108,8 @@
           <tbody>
             <tr *ngFor="let winner of winnersByYear; let i = index" [class.odd]="i % 2 === 0">
               <td>{{ winner.title }}</td>
-              <td>{{ winner.studios?.join(', ') }}</td>
-              <td>{{ winner.producers?.join(', ') }}</td>
+              <td>{{ winner.studios.join(', ') }}</td>
+              <td>{{ winner.producers.join(', ') }}</td>
             </tr>
           </tbody>
         </table>

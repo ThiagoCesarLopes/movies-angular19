@@ -4,16 +4,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
-interface Movie {
-  id: number;
-  year: number;
-  title: string;
-  studios: string[];
-  producers: string[];
-  winner: boolean;
-}
+
 
 @Component({
   selector: 'app-movies-list',
@@ -24,8 +16,7 @@ interface Movie {
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    CommonModule,
-    RouterOutlet
+    CommonModule
   ]
 })
 export class MoviesListComponent implements OnInit {
