@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
   yearFilter: number | null = null;
-  winnerFilter: string | null = null;
+  winnerFilter: string | null = ''; 
   currentPage = 0;
   totalPages = 0;
   pages: number[] = [];
@@ -35,7 +35,10 @@ export class MoviesListComponent implements OnInit {
   }
 
   loadMovies(): void {
-    this.movieService.getMovies(this.currentPage, 10, this.yearFilter ?? undefined, this.winnerFilter === 'true')
+    const winnerFilterValue = this.winnerFilter === 'true' ? true : this.winnerFilter === 'false' ? false : undefined;
+    const yearFilterValue = this.yearFilter ?? undefined; 
+
+    this.movieService.getMovies(this.currentPage, 10, yearFilterValue, winnerFilterValue)
       .subscribe({
         next: (data: { content: any[]; totalElements: number }) => {
           this.movies = data.content;

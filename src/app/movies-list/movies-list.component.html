@@ -17,7 +17,7 @@
           <th>
             <span class="column-title">Year</span>
             <div class="filter-header">
-              <input [(ngModel)]="yearFilter" placeholder="Search by Year" type="number" class="filter-input" />
+              <input [(ngModel)]="yearFilter" (ngModelChange)="applyFilters()" placeholder="Search by Year" type="number" class="filter-input" />
             </div>
           </th>
           <th>
@@ -26,8 +26,8 @@
           <th>
             <span class="column-title">Winner?</span>
             <div class="filter-header">
-              <select [(ngModel)]="winnerFilter" class="filter-dropdown">
-                <option value="" disabled selected>Yes/No</option>
+              <select [(ngModel)]="winnerFilter" (ngModelChange)="applyFilters()" class="filter-dropdown">
+                <option value="">Yes/No</option>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
               </select>
@@ -45,12 +45,10 @@
       </tbody>
     </table>
 
-    <!-- Paginação -->
     <div class="pagination-container">
       <button (click)="previousGroup()" [disabled]="visiblePages[0] === 1">‹‹</button>
       <button (click)="previousPage()" [disabled]="currentPage === 0">‹</button>
 
-      <!-- Números das Páginas -->
       <button 
         *ngFor="let page of visiblePages" 
         (click)="goToPage(page - 1)" 
