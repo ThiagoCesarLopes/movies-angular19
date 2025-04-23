@@ -1,0 +1,65 @@
+<div class="layout">
+
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    <div class="header-container">
+      <h1 class="list-title">List Movies</h1>
+    </div>
+
+    <!-- Tabela -->
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>
+            <span class="column-title">ID</span>
+          </th>
+          <th>
+            <span class="column-title">Year</span>
+            <div class="filter-header">
+              <input [(ngModel)]="yearFilter" placeholder="Search by Year" type="number" class="filter-input" />
+            </div>
+          </th>
+          <th>
+            <span class="column-title">Title</span>
+          </th>
+          <th>
+            <span class="column-title">Winner?</span>
+            <div class="filter-header">
+              <select [(ngModel)]="winnerFilter" class="filter-dropdown">
+                <option value="" disabled selected>Yes/No</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies">
+          <td>{{ movie.id }}</td>
+          <td>{{ movie.year }}</td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.winner ? 'Yes' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Paginação -->
+    <div class="pagination-container">
+      <button (click)="previousGroup()" [disabled]="visiblePages[0] === 1">‹‹</button>
+      <button (click)="previousPage()" [disabled]="currentPage === 0">‹</button>
+
+      <!-- Números das Páginas -->
+      <button 
+        *ngFor="let page of visiblePages" 
+        (click)="goToPage(page - 1)" 
+        [class.active]="page - 1 === currentPage">
+        {{ page }}
+      </button>
+
+      <button (click)="nextPage()" [disabled]="currentPage + 1 >= totalPages">›</button>
+      <button (click)="nextGroup()" [disabled]="visiblePages[visiblePages.length - 1] === totalPages">››</button>
+    </div>
+  </div>
+</div>

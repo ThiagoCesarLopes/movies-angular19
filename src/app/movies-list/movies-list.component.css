@@ -1,0 +1,237 @@
+/* Container Principal */
+.list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.list-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Layout Principal */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Menu Lateral */
+.sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 20px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar ul li a.active {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Conteúdo Principal */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Header */
+.header-bar {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.filter-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-dropdown {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-button i {
+  font-size: 18px;
+}
+
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilização do Cabeçalho com Filtro */
+.filter-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.filter-header span {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-input,
+.filter-dropdown {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Campo de Busca na Tabela */
+.styled-table th {
+  position: relative;
+  height: 60px; /* Reduz a altura do cabeçalho */
+  padding: 5px;
+  text-align: center; /* Alinha os títulos ao centro */
+  vertical-align: middle; /* Centraliza verticalmente o conteúdo */
+}
+
+.styled-table th .filter-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  position: absolute;
+  bottom: 10px; /* Posiciona o filtro na parte inferior */
+  left: 0px;
+  width: 100%;
+}
+
+.styled-table th input.filter-input,
+.styled-table th select.filter-dropdown {
+  position: absolute;
+  bottom: -8px;
+  left: 18px;
+  width: 90%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Tabela */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.styled-table tr.odd {
+  background-color: #f9f9f9;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Paginação */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  padding: 8px 12px;
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-container button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Título da Lista */
+.list-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left; /* Alinha o título à esquerda */
+}
+
+/* Título das Colunas */
+.column-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px; /* Reduz o espaço entre o título e o filtro */
+  text-align: center; /* Alinha o título ao centro */
+}
