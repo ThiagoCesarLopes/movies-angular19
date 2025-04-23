@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 interface YearWithMultipleWinners {
   year: number;
@@ -33,7 +32,7 @@ interface WinnerByYear {
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [FormsModule, CommonModule,RouterOutlet],
+  imports: [FormsModule, CommonModule],
 })
 export class DashboardComponent implements OnInit {
   yearsWithMultipleWinners: YearWithMultipleWinners[] = [];

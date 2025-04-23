@@ -4,16 +4,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
-interface Movie {
-  id: number;
-  year: number;
-  title: string;
-  studios: string[];
-  producers: string[];
-  winner: boolean;
-}
+
 
 @Component({
   selector: 'app-movies-list',
@@ -24,14 +16,13 @@ interface Movie {
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    CommonModule,
-    RouterOutlet
+    CommonModule
   ]
 })
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
   yearFilter: number | null = null;
-  winnerFilter: string | null = null;
+  winnerFilter: string | null = ''; 
   currentPage = 0;
   totalPages = 0;
   pages: number[] = [];
@@ -44,7 +35,10 @@ export class MoviesListComponent implements OnInit {
   }
 
   loadMovies(): void {
-    this.movieService.getMovies(this.currentPage, 10, this.yearFilter ?? undefined, this.winnerFilter === 'true')
+    const winnerFilterValue = this.winnerFilter === 'true' ? true : this.winnerFilter === 'false' ? false : undefined;
+    const yearFilterValue = this.yearFilter ?? undefined; 
+
+    this.movieService.getMovies(this.currentPage, 10, yearFilterValue, winnerFilterValue)
       .subscribe({
         next: (data: { content: any[]; totalElements: number }) => {
           this.movies = data.content;
